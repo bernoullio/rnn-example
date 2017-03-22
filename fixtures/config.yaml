@@ -1,0 +1,13 @@
+!!python/object:rnn.data.Config
+data_file: 'fixtures/sinh.csv' # csv file to read as data
+time_steps: 19
+epochs_count: 1500
+n_features: 1
+n_output_dim: 3
+rnn_layers:
+  - 4
+  - 10
+rnn_in_keep: 1.0
+rnn_out_keep: 1.0
+batch_size: 1
+lr: 0.1

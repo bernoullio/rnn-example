@@ -1,0 +1,11 @@
+test:
+  build: .
+  volumes:
+    - ./:/usr/src/app
+  command: py.test
+
+train:
+  build: .
+  volumes:
+    - ./:/usr/src/app
+  command: python train.py
