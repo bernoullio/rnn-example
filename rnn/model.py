@@ -31,11 +31,11 @@ class Rnn(object):
 
         w = tf.get_variable("w",
                             [output_size, self._conf.n_output_dim],
-                            initializer=tf.random_normal_initializer(0, 0.1),
+                            initializer=tf.constant_initializer(0),
                             dtype=tf.float32)
         b = tf.get_variable("b",
                             [self._conf.n_output_dim],
-                            initializer=tf.random_normal_initializer(0, 0.1),
+                            initializer=tf.constant_initializer(0),
                             dtype=tf.float32)
         self.predictions = tf.matmul(outputs[-1], w) + b
 

@@ -12,7 +12,7 @@ time_steps: 5
 #     X: [2, 3], y: 4
 #     X: [3, 4], y: 5, etc.
 
-epochs_count: 5
+epochs_count: 50
 n_features: 1     # dimension of input
 n_output_dim: 1   # dimension of ouput
 rnn_in_keep: 1.0  # dropout options

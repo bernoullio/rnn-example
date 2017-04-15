@@ -2,7 +2,7 @@
 data_file: 'fixtures/trig.csv'
 output_file: 'outputs/wide.csv'
 time_steps: 5
-epochs_count: 5
+epochs_count: 50
 n_features: 1
 n_output_dim: 1
 rnn_layers:
