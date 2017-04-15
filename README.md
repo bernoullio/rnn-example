@@ -8,7 +8,7 @@ of the given series.
 
 - Edit `fixtures/config.yaml`
 - `docker-compose up train`
-- check `./predictions.csv`
+- check `./outputs/`
 
 # Tests
 

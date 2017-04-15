@@ -1,3 +1,4 @@
+import os
 import csv
 import numpy as np
 import pytest
@@ -43,17 +44,15 @@ def main(conf):
             predictions = sess.run(m_validate.predictions,
                                    feed_dict={m_validate._inputs: x_test,
                                               m_validate._targets: y_test})
-        pairs = np.asarray([y_test, predictions]).transpose()
-
-        with open('prediction.csv', 'w') as csvfile:
+        with open('outputs/%s' % conf.data_file.split('/')[-1], 'w') as csvfile:
             writer = csv.writer(csvfile)
-            pytest.set_trace()
-            for pair in pairs:
-                [writer.writerow(p) for p in pair]
-                writer.writerow("*****")
-        mse = ((predictions - y_test) ** 2 ).mean()
+            writer.writerow(y_test.reshape(-1))
+            writer.writerow(predictions.reshape(-1))
+        mse = ((predictions - y_test.astype('float32')) ** 2 ).mean()
         print(mse)
 
 
 if __name__ == "__main__":
-    main(data.load_conf("fixtures/config.yaml"))
+    for conf in os.listdir("configs"):
+        print("Processing %s" % conf)
+        main(data.load_conf("configs/%s" % conf))

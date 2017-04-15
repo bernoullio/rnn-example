@@ -56,7 +56,3 @@ def split(tensor, time_steps, n_features):
     x = tf.reshape(x, [-1, n_features])  # Flatten into (time_steps * batch_size, n_features)
     x = tf.split(x, time_steps, 0)  # split into a list  of #(time_steps) tensors of shape (batch_size, n_features)
     return x
-
-
-
-
