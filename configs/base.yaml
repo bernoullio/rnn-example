@@ -1,12 +1,28 @@
 !!python/object:rnn.data.Config
-data_file: 'fixtures/trig.csv' # csv file to read as data
+
+data_file: 'fixtures/trig.csv'
+# csv file to read as data
+
 time_steps: 10
+# The number of data points bundle together to use in one 'observation'
+# For the series [1, 2, 3, 4, 5, 6], when time_steps = 2 we have
+# the following observations, one (X, y) pair to feed into the network:
+#     X: [1, 2], y: 3
+#     X: [2, 3], y: 4
+#     X: [3, 4], y: 5, etc.
+
 epochs_count: 100
-n_features: 1
-n_output_dim: 1
+n_features: 1     # dimension of input
+n_output_dim: 1   # dimension of ouput
+rnn_in_keep: 1.0  # dropout options
+rnn_out_keep: 1.0 # dropout options
+lr: 0.1           # learning rate
+
+batch_size: 1
+# the number of observations to feed together before
+# tuning the model weights
+
 rnn_layers:
   - 10
-rnn_in_keep: 1.0
-rnn_out_keep: 1.0
-batch_size: 1
-lr: 0.1
+# the number of LSTM cells in each layer.
+# Here we have 1 layer of 10 cells
