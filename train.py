@@ -44,7 +44,7 @@ def main(conf):
             predictions = sess.run(m_validate.predictions,
                                    feed_dict={m_validate._inputs: x_test,
                                               m_validate._targets: y_test})
-        with open('outputs/%s' % conf.data_file.split('/')[-1], 'w') as csvfile:
+        with open(conf.output_file, 'w') as csvfile:
             writer = csv.writer(csvfile)
             writer.writerow(y_test.reshape(-1))
             writer.writerow(predictions.reshape(-1))

@@ -1,7 +1,7 @@
 !!python/object:rnn.data.Config
 
-data_file: 'fixtures/trig.csv'
-# csv file to read as data
+data_file: 'fixtures/trig.csv' # csv file to read as data
+output_file: 'outputs/base.csv' # path to the output file
 
 time_steps: 10
 # The number of data points bundle together to use in one 'observation'
