@@ -28,13 +28,14 @@ class Rnn(object):
                                                     dtype=tf.float32)
 
         output_size = self._conf.rnn_layers[-1]  # the top most rnn layer
-        # outputs = tf.reshape(tf.concat(outputs, 1), [-1, output_size])  # array of shape (batch_size*timesteps, output_size)
 
         w = tf.get_variable("w",
                             [output_size, self._conf.n_output_dim],
+                            initializer=tf.random_normal_initializer(0, 0.1),
                             dtype=tf.float32)
         b = tf.get_variable("b",
                             [self._conf.n_output_dim],
+                            initializer=tf.random_normal_initializer(0, 0.1),
                             dtype=tf.float32)
         self.predictions = tf.matmul(outputs[-1], w) + b
 

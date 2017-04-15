@@ -2,8 +2,9 @@
 
 data_file: 'fixtures/trig.csv' # csv file to read as data
 output_file: 'outputs/base.csv' # path to the output file
+# label_file: 'fixtures/trig_rolling_min.csv' # custom label data
 
-time_steps: 10
+time_steps: 5
 # The number of data points bundle together to use in one 'observation'
 # For the series [1, 2, 3, 4, 5, 6], when time_steps = 2 we have
 # the following observations, one (X, y) pair to feed into the network:
@@ -11,7 +12,7 @@ time_steps: 10
 #     X: [2, 3], y: 4
 #     X: [3, 4], y: 5, etc.
 
-epochs_count: 100
+epochs_count: 5
 n_features: 1     # dimension of input
 n_output_dim: 1   # dimension of ouput
 rnn_in_keep: 1.0  # dropout options
@@ -23,6 +24,7 @@ batch_size: 1
 # tuning the model weights
 
 rnn_layers:
-  - 10
+  - 5
 # the number of LSTM cells in each layer.
 # Here we have 1 layer of 10 cells
+

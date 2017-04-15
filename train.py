@@ -25,13 +25,14 @@ def main(conf):
 
         all_data = data.load_file(conf.data_file)
         test_index = int(len(all_data) * 0.8)
+        padded_test_index = test_index - conf.time_steps
         if hasattr(conf, 'label_file'):
             labels = data.load_file(conf.label_file)
             x, y = data.create_labelled_feed(all_data[0:test_index], labels[0:test_index], conf)
-            x_test, y_test = data.create_labelled_feed(all_data[test_index:], labels[test_index:], conf)
+            x_test, y_test = data.create_labelled_feed(all_data[padded_test_index:], labels[padding_test_index:], conf)
         else:
             x, y = data.create_feed(all_data[0:test_index], conf)
-            x_test, y_test = data.create_feed(all_data[test_index:], conf)
+            x_test, y_test = data.create_feed(all_data[padded_test_index:], conf)
 
         with tf.Session() as sess:
             sess.run(init)
@@ -54,5 +55,6 @@ def main(conf):
 
 if __name__ == "__main__":
     for conf in os.listdir("configs"):
+        tf.reset_default_graph()
         print("Processing %s" % conf)
         main(data.load_conf("configs/%s" % conf))

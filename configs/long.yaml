@@ -1,13 +1,14 @@
 !!python/object:rnn.data.Config
 data_file: 'fixtures/trig.csv'
 output_file: 'outputs/wide.csv'
-time_steps: 5
+time_steps: 15
 epochs_count: 5
 n_features: 1
 n_output_dim: 1
 rnn_layers:
-  - 70
+  - 10
 rnn_in_keep: 1.0
 rnn_out_keep: 1.0
 batch_size: 1
 lr: 0.1
+
